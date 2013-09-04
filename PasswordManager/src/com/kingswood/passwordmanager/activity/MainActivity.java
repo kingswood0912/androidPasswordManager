@@ -1,4 +1,6 @@
-package com.kingswood.passwordmanager;
+package com.kingswood.passwordmanager.activity;
+
+import com.kingswood.passwordmanager.R;
 
 import android.os.Bundle;
 import android.app.Activity;
