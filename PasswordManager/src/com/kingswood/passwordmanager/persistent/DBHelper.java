@@ -13,14 +13,12 @@ public class DBHelper extends SQLiteOpenHelper {
 	
 	private static final int DATABASE_VERSION = 1;
 	
-	public static final String COLUMN_NAME = "_name";
-	public static final String COLUMN_USERNAME = "_username";
-	public static final String COLUMN_PASSWORD = "_password";
-	public static final String COLUMN_DESCRIPTION = "_description";
+	
+	
+	//private static final String SQL_INSERT = "insert into " + TABLE_NAME + " (_name, _username, _password, _description) values (?,?,?,?) ";  
 	
 	private static String CREATE_PASSWORD_TABLE = "create table " + TABLE_NAME
-			+ " ( " + COLUMN_NAME + " text, " + COLUMN_USERNAME + " text, "
-			+ COLUMN_PASSWORD + " text, " + COLUMN_DESCRIPTION + " text)";
+			+ " (_name text, _username text, _password text, _description text )";
 
 	public DBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
