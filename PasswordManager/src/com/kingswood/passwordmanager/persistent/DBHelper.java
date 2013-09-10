@@ -9,7 +9,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	
 	public static final String DATABASE_NAME = "passwordManager.db";
 	
-	public static final String TABLE_NAME = "PASSWORD";
+	public static final String TABLE_PASSWORD = "PASSWORD";
 	
 	private static final int DATABASE_VERSION = 1;
 	
@@ -17,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	
 	//private static final String SQL_INSERT = "insert into " + TABLE_NAME + " (_name, _username, _password, _description) values (?,?,?,?) ";  
 	
-	private static String CREATE_PASSWORD_TABLE = "create table " + TABLE_NAME
+	private static String CREATE_PASSWORD_TABLE = "create table " + TABLE_PASSWORD
 			+ " (_name text, _username text, _password text, _description text )";
 
 	public DBHelper(Context context) {
@@ -40,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		Log.w(this.getClass().getName(),
 		        "Upgrading database from version " + oldVersion + " to "
 		            + newVersion + ", which will destroy all old data");
-		    db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+		    db.execSQL("DROP TABLE IF EXISTS " + TABLE_PASSWORD);
 		    onCreate(db);
 
 	}

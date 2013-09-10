@@ -8,7 +8,7 @@ public interface IPasswordDAO {
 
 	public void insertPassword(PasswordVO passwordVO);
 	
-	public List<PasswordVO> selectAllPassword();
+	public List<PasswordVO> selectAllPasswords();
 	
 	public void updatePassword(PasswordVO passwordVO);
 	
