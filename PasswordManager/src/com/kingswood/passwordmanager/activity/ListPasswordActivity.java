@@ -7,6 +7,7 @@ import org.apache.http.message.BasicNameValuePair;
 import com.kingswood.passwordmanager.PasswordVO;
 import com.kingswood.passwordmanager.persistent.IPasswordDAO;
 import com.kingswood.passwordmanager.persistent.PasswordDAO;
+import com.kingswood.passwordmanager.util.DataUtil;
 
 import android.app.ListActivity;
 import android.content.Context;
@@ -24,18 +25,15 @@ public class ListPasswordActivity extends ListActivity {
 		
 		super.onCreate(savedInstanceState);
 		
+		DataUtil.initializeData(getApplicationContext());
+		
 		IPasswordDAO dao = new PasswordDAO(getApplicationContext());
 		
 		List<PasswordVO> passwordList = dao.selectAllPasswords();
 		
-		ArrayAdapter<PasswordVO> adapter = null;
-		
-		adapter = new ArrayAdapter (this, android.R.layout.simple_list_item_2, android.R.id.text1, passwordList) ;
-
+		ListPasswordAdapter adapter = new ListPasswordAdapter(passwordList, getApplicationContext());
 			
-
-		
-		setListAdapter(null);
+		setListAdapter(adapter);
 		
 	}
 	
