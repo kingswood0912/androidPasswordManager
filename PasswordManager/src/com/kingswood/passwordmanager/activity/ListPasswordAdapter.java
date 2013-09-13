@@ -5,6 +5,7 @@ import java.util.List;
 import com.kingswood.passwordmanager.PasswordVO;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,9 @@ public class ListPasswordAdapter extends BaseAdapter {
 
         text1.setText(passwordList.get(position).getName());
         text2.setText(passwordList.get(position).getDescription());
+        
+        // set background color as black
+        twoLineListItem.setBackgroundColor(Color.BLACK);
 
         return twoLineListItem;
 	}
