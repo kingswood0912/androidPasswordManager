@@ -14,4 +14,6 @@ public interface IPasswordDAO {
 	
 	public void deletePassword(String name);
 	
+	public PasswordVO selectPasswordByName(String name);
+	
 }

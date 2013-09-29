@@ -6,6 +6,7 @@ public class PMLog{
 	
 	public static void log(String msg){
 		Log.d("", msg);
+		System.out.println(msg);
 	}
 	
 }

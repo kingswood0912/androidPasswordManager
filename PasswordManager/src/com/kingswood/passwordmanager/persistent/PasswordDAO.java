@@ -90,4 +90,27 @@ public class PasswordDAO implements IPasswordDAO {
 
 	}
 
+
+	@Override
+	public PasswordVO selectPasswordByName(String name) {
+		
+		Cursor cursor = database.query(DBHelper.TABLE_PASSWORD, allColumns, COLUMN_NAME+"=?", new String[]{name}, null, null, null);
+		
+		cursor.moveToFirst();
+		
+		if(!cursor.isAfterLast()){
+			
+			PasswordVO vo = new PasswordVO();
+			vo.setName(cursor.getString(0));
+			vo.setUsername(cursor.getString(1));
+			vo.setPassword(cursor.getString(2));
+			vo.setDescription(cursor.getString(2));
+			
+			return vo;
+		}
+		
+		return null;
+		
+	}
+
 }
