@@ -8,6 +8,8 @@ import com.kingswood.passwordmanager.util.PMLog;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -67,7 +69,7 @@ public class AddPasswordActivity extends Activity {
 		
 		alert();
 		
-		this.finish();
+		//this.finish();
 		
 	}
 	
@@ -76,8 +78,28 @@ public class AddPasswordActivity extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
 		// 2. Chain together various setter methods to set the dialog characteristics
-		builder.setMessage("create sucessful, add a new one?")
+		builder.setMessage("The password has been added, do you want to add another one?")
 		       .setTitle("message");
+		
+		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+	           public void onClick(DialogInterface dialog, int id) {
+	        	   name.setText(null);
+	        	   username.setText(null);
+	        	   password.setText(null);
+	        	   description.setText(null);
+	        	   name.requestFocus();
+	           }
+	       });
+		builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+	           public void onClick(DialogInterface dialog, int id) {
+	        	   
+	        	   AddPasswordActivity.this.finish();
+	        	   
+	        	   Intent intent = new Intent();
+		           intent.setClass(AddPasswordActivity.this, ListPasswordActivity.class);
+		           startActivity(intent);
+	           }
+	       });
 
 		// 3. Get the AlertDialog from create()
 		AlertDialog dialog = builder.create();
