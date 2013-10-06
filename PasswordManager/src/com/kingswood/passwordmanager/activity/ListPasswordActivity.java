@@ -4,7 +4,10 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
+import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,89 +24,117 @@ import com.kingswood.passwordmanager.util.DataUtil;
 import com.kingswood.passwordmanager.util.PMLog;
 
 @SuppressLint("NewApi")
-public class ListPasswordActivity extends ListActivity implements SearchView.OnQueryTextListener {
-	
+public class ListPasswordActivity extends ListActivity implements
+		SearchView.OnQueryTextListener {
+
 	private SearchView mSearchView;
 
-	public void onCreate(Bundle savedInstanceState){
-		
-		super.onCreate(savedInstanceState);
-		
-		DataUtil.initializeData(getApplicationContext());
-		
-		IPasswordDAO dao = new PasswordDAO(getApplicationContext());
-		
-		List<PasswordVO> passwordList = dao.selectAllPasswords();
-		
-		ListPasswordAdapter adapter = new ListPasswordAdapter(passwordList, getApplicationContext());
-			
-		setListAdapter(adapter);
-		
-	}
+	private String searchFilter;
 	
+	private ListPasswordAdapter adapter;
+	
+	List<PasswordVO> passwordList = null;
+
+	public void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+
+		DataUtil.initializeData(getApplicationContext());
+
+		IPasswordDAO dao = new PasswordDAO(getApplicationContext());
+
+		if (null == searchFilter) {
+			passwordList = dao.selectAllPasswords();
+		} else {
+			passwordList = dao.selectPasswordsByNameOrDescription(searchFilter);
+		}
+
+		adapter = new ListPasswordAdapter(passwordList,
+				getApplicationContext());
+
+		setListAdapter(adapter);
+
+	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-	    switch (item.getItemId()) {
-	        case R.id.menu_create_new:
-	            PMLog.log("click menu option of 'new password'");
-	            Intent intent = new Intent();
-	            intent.setClass(this, AddPasswordActivity.class);
-	            startActivity(intent);
-	            return true;
-	        case R.id.menu_edit:
-	        	PMLog.log("click menu option of 'edit passwords'");
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.menu_create_new:
+			PMLog.log("click menu option of 'new password'");
+			Intent intent = new Intent();
+			intent.setClass(this, AddPasswordActivity.class);
+			startActivity(intent);
+			return true;
+		case R.id.menu_edit:
+			PMLog.log("click menu option of 'edit passwords'");
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.list_password_menu, menu);
-	    
-	    MenuItem searchItem = menu.findItem(R.id.action_search);
-	    mSearchView = (SearchView) searchItem.getActionView();
-	    setupSearchView(searchItem);
-	    
-	    return true;
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.list_password_menu, menu);
+
+		MenuItem searchItem = menu.findItem(R.id.action_search);
+		mSearchView = (SearchView) searchItem.getActionView();
+		setupSearchView(searchItem);
+
+		return true;
 	}
-	
+
 	private void setupSearchView(MenuItem searchItem) {
 		if (isAlwaysExpanded()) {
 			mSearchView.setIconifiedByDefault(false);
 		} else {
-			searchItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+			searchItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM
+					| MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
 		}
-		
+
 		mSearchView.setOnQueryTextListener(this);
 	}
-	
+
 	protected boolean isAlwaysExpanded() {
-			return false;
+		return true;
 	}
-	
-	
-	
-	public View getView(int position, View convertView, ViewGroup parent){
-		
-		
+
+	public View getView(int position, View convertView, ViewGroup parent) {
 		return null;
-		
+
 	}
 
 	@Override
 	public boolean onQueryTextChange(String arg0) {
-		// TODO Auto-generated method stub
-		return false;
+		PMLog.log("onQueryTextChange----------");
+		searchFilter = arg0;
+		PMLog.log("searchFilter is ---------- " + searchFilter);
+		
+		IPasswordDAO dao = new PasswordDAO(getApplicationContext());
+
+		
+		if (null == searchFilter) {
+			passwordList = dao.selectAllPasswords();
+		} else {
+			passwordList = dao.selectPasswordsByNameOrDescription(searchFilter);
+		}
+		
+		PMLog.log("password list size is : " + passwordList.size() + " after filtered by '" + searchFilter + "'");
+		
+		adapter.setPasswordList(passwordList);
+		
+		adapter.notifyDataSetChanged();
+
+		return true;
 	}
 
 	@Override
 	public boolean onQueryTextSubmit(String arg0) {
-		// TODO Auto-generated method stub
-		return false;
+		PMLog.log("onQueryTextSubmit----------");
+		return true;
 	}
-	
+
+
 }

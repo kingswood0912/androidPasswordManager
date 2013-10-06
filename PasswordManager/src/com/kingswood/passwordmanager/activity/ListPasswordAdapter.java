@@ -3,6 +3,7 @@ package com.kingswood.passwordmanager.activity;
 import java.util.List;
 
 import com.kingswood.passwordmanager.PasswordVO;
+import com.kingswood.passwordmanager.util.PMLog;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -23,6 +24,10 @@ public class ListPasswordAdapter extends BaseAdapter {
 		this.context = context;
 	}
 	
+	public void setPasswordList(List<PasswordVO> passwordList){
+		this.passwordList = passwordList;
+	}
+	
 	@Override
 	public int getCount() {
 		return passwordList.size();
@@ -40,6 +45,9 @@ public class ListPasswordAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		
+		PMLog.log("calling ListPasswordAdapter getView method-------------");
+		
 		TwoLineListItem twoLineListItem;
 
         if (convertView == null) {

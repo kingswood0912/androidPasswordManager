@@ -16,4 +16,6 @@ public interface IPasswordDAO {
 	
 	public PasswordVO selectPasswordByName(String name);
 	
+	public List<PasswordVO> selectPasswordsByNameOrDescription(String nameOrDescription);
+	
 }

@@ -18,63 +18,64 @@ public class PasswordDAO implements IPasswordDAO {
 	public static final String COLUMN_USERNAME = "_username";
 	public static final String COLUMN_PASSWORD = "_password";
 	public static final String COLUMN_DESCRIPTION = "_description";
-	
+
 	private String[] allColumns = { COLUMN_NAME, COLUMN_USERNAME,
 			COLUMN_PASSWORD, COLUMN_DESCRIPTION };
-	
+
 	private SQLiteDatabase database;
 	private DBHelper dbHelper;
-	
-	public PasswordDAO(Context context){
+
+	public PasswordDAO(Context context) {
 		dbHelper = new DBHelper(context);
-		if(null == database){
+		if (null == database) {
 			database = dbHelper.getWritableDatabase();
 		}
 	}
-	
-	
+
 	@Override
 	public void insertPassword(PasswordVO passwordVO) {
-		
+
 		ContentValues values = new ContentValues();
 		values.put(COLUMN_NAME, passwordVO.getName());
 		values.put(COLUMN_USERNAME, passwordVO.getUsername());
 		values.put(COLUMN_PASSWORD, passwordVO.getPassword());
 		values.put(COLUMN_DESCRIPTION, passwordVO.getDescription());
-		
+
 		database.insert(DBHelper.TABLE_PASSWORD, null, values);
 
-		Log.d("My APP","new record is added into table PASSWORD");
+		Log.d("My APP", "new record is added into table PASSWORD");
 
 	}
 
 	@Override
 	public List<PasswordVO> selectAllPasswords() {
-		
+
 		PMLog.log("Start calling selectAllPassword");
-		
+
 		List<PasswordVO> allPasswords = new ArrayList<PasswordVO>();
-		
-		Cursor cursor = database.query(DBHelper.TABLE_PASSWORD, allColumns, null, null, null, null, null);
-		
+
+		Cursor cursor = database.query(DBHelper.TABLE_PASSWORD, allColumns,
+				null, null, null, null, null);
+
 		cursor.moveToFirst();
-		
-		while(!cursor.isAfterLast()){
+
+		while (!cursor.isAfterLast()) {
 			PasswordVO vo = new PasswordVO();
 			vo.setName(cursor.getString(0));
 			vo.setUsername(cursor.getString(1));
 			vo.setPassword(cursor.getString(2));
 			vo.setDescription(cursor.getString(2));
-			
+
 			allPasswords.add(vo);
-			
+
 			cursor.moveToNext();
 		}
-		
+
 		cursor.close();
-		
-		PMLog.log("Stop calling selectAllPassword, total size of password list is : " + allPasswords.size());
-		
+
+		PMLog.log("Stop calling selectAllPassword, total size of password list is : "
+				+ allPasswords.size());
+
 		return allPasswords;
 	}
 
@@ -90,27 +91,61 @@ public class PasswordDAO implements IPasswordDAO {
 
 	}
 
-
 	@Override
 	public PasswordVO selectPasswordByName(String name) {
-		
-		Cursor cursor = database.query(DBHelper.TABLE_PASSWORD, allColumns, COLUMN_NAME+"=?", new String[]{name}, null, null, null);
-		
+
+		Cursor cursor = database.query(DBHelper.TABLE_PASSWORD, allColumns,
+				COLUMN_NAME + "=?", new String[] { name }, null, null, null);
+
 		cursor.moveToFirst();
-		
-		if(!cursor.isAfterLast()){
-			
+
+		if (!cursor.isAfterLast()) {
+
 			PasswordVO vo = new PasswordVO();
 			vo.setName(cursor.getString(0));
 			vo.setUsername(cursor.getString(1));
 			vo.setPassword(cursor.getString(2));
 			vo.setDescription(cursor.getString(2));
-			
+
 			return vo;
 		}
-		
+
 		return null;
+
+	}
+
+	@Override
+	public List<PasswordVO> selectPasswordsByNameOrDescription(
+			String nameOrDescription) {
+
+		PMLog.log("Start calling selectPasswordsByNameOrDescription");
 		
+		List<PasswordVO> passwords = new ArrayList<PasswordVO>();
+
+		Cursor cursor = database
+				.query(DBHelper.TABLE_PASSWORD, allColumns, COLUMN_NAME
+						+ " like ? or " + COLUMN_DESCRIPTION + " like ? ",
+						new String[] { "%"+nameOrDescription+"%", "%"+nameOrDescription+"%" },
+						null, null, null);
+		cursor.moveToFirst();
+
+		while (!cursor.isAfterLast()) {
+			PasswordVO vo = new PasswordVO();
+			vo.setName(cursor.getString(0));
+			vo.setUsername(cursor.getString(1));
+			vo.setPassword(cursor.getString(2));
+			vo.setDescription(cursor.getString(2));
+
+			passwords.add(vo);
+
+			cursor.moveToNext();
+		}
+
+		cursor.close();
+
+		PMLog.log("End calling selectPasswordsByNameOrDescription");
+		
+		return passwords;
 	}
 
 }
