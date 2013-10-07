@@ -2,9 +2,6 @@ package com.kingswood.passwordmanager.activity;
 
 import java.util.List;
 
-import com.kingswood.passwordmanager.PasswordVO;
-import com.kingswood.passwordmanager.util.PMLog;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -12,16 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.TwoLineListItem;
+
+import com.kingswood.passwordmanager.PasswordVO;
+import com.kingswood.passwordmanager.R;
 
 public class ListPasswordAdapter extends BaseAdapter {
 
 	private List<PasswordVO> passwordList;
 	private Context context;
+	private LayoutInflater inflater;
 	
 	public ListPasswordAdapter(List<PasswordVO> passwordList, Context context){
 		this.passwordList = passwordList;
 		this.context = context;
+		inflater = LayoutInflater.from(context);
 	}
 	
 	public void setPasswordList(List<PasswordVO> passwordList){
@@ -43,7 +44,7 @@ public class ListPasswordAdapter extends BaseAdapter {
 		return 0;
 	}
 
-	@Override
+	/*@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
 		PMLog.log("calling ListPasswordAdapter getView method-------------");
@@ -69,6 +70,21 @@ public class ListPasswordAdapter extends BaseAdapter {
         twoLineListItem.setBackgroundColor(Color.BLACK);
 
         return twoLineListItem;
+	}*/
+	
+	public View getView(int position, View convertView, ViewGroup parent) {
+		
+		 
+        if (convertView == null) {
+        	convertView = inflater.inflate(R.layout.list_view_item, null);
+        	TextView name = (TextView)convertView.findViewById(R.id.item_view_name);
+        	TextView description = (TextView)convertView.findViewById(R.id.item_view_description);
+        	name.setText(passwordList.get(position).getName());
+        	description.setText(passwordList.get(position).getDescription());
+        	convertView.setBackgroundColor(Color.BLACK);
+        }  
+		
+		return convertView;
 	}
 
 }

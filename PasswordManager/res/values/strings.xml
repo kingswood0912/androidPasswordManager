@@ -23,5 +23,9 @@
     <!-- Menu texts -->
     <string name="menu_create_new">Add new password</string>
     <string name="menu_edit">Edit existing passwords</string>
+    
+    <!-- Image descriptions -->
+    <string name="image_delete">delete</string>
+    <string name="image_edit">edit</string>
 
 </resources>

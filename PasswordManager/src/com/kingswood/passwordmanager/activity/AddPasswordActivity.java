@@ -34,8 +34,6 @@ public class AddPasswordActivity extends Activity {
 		username = (EditText)findViewById(R.id.add_password_username);
 		password = (EditText)findViewById(R.id.add_password_password);
 		description = (EditText)findViewById(R.id.add_password_description);
-		
-		
 	}
 	
 	public void onSave(View v){
