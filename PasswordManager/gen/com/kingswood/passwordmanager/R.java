@@ -26,24 +26,26 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int action_search=0x7f08000a;
+        public static final int action_search=0x7f08000b;
         public static final int add_password_description=0x7f080003;
         public static final int add_password_name=0x7f080000;
         public static final int add_password_password=0x7f080002;
         public static final int add_password_username=0x7f080001;
         public static final int cancel_button=0x7f080005;
-        public static final int item_view_delete_item=0x7f080008;
-        public static final int item_view_description=0x7f080007;
+        public static final int item_view_delete_item=0x7f08000a;
+        public static final int item_view_description=0x7f080008;
         public static final int item_view_edit_item=0x7f080009;
-        public static final int item_view_name=0x7f080006;
-        public static final int menu_create_new=0x7f08000b;
-        public static final int menu_edit=0x7f08000c;
+        public static final int item_view_name=0x7f080007;
+        public static final int menu_create_new=0x7f08000c;
+        public static final int menu_edit=0x7f08000d;
+        public static final int relativeLayout1=0x7f080006;
         public static final int save_button=0x7f080004;
     }
     public static final class layout {
         public static final int layout_add_password=0x7f030000;
         public static final int layout_list_password=0x7f030001;
         public static final int list_view_item=0x7f030002;
+        public static final int test_layout=0x7f030003;
     }
     public static final class menu {
         public static final int list_password_menu=0x7f070000;

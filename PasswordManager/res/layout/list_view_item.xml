@@ -1,47 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#FFFFFFFF"
-    android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:gravity="center_vertical">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="57dp" 
+        android:gravity="center_vertical">
+    </RelativeLayout>
 
-        <TextView
-            android:id="@+id/item_view_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFFFF" />
+    <TextView
+        android:id="@+id/item_view_description"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/item_view_name"
+        android:layout_below="@+id/item_view_name"
+        android:textSize="16sp"
+        />
 
-        <TextView
-            android:id="@+id/item_view_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFFFF" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/item_view_name"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="19dp"
+        android:textSize="16sp"
+        />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="horizontal" >
+    <ImageView
+        android:id="@+id/item_view_edit_item"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_toLeftOf="@+id/item_view_delete_item"
+        android:contentDescription="@string/image_edit"
+        android:src="@drawable/ic_edit" 
+        android:clickable="true"/>
 
-        <ImageView
-            android:id="@+id/item_view_delete_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_delete"
-            android:contentDescription="@string/image_delete"/>
-        <ImageView
-            android:id="@+id/item_view_edit_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit"
-            android:contentDescription="@string/image_edit"/>
+    <ImageView
+        android:id="@+id/item_view_delete_item"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/item_view_edit_item"
+        android:layout_marginRight="14dp"
+        android:contentDescription="@string/image_delete"
+        android:src="@drawable/ic_delete" 
+        android:clickable="true"
+        android:onClick="processDelete"/>
 
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

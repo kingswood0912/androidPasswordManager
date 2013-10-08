@@ -135,6 +135,10 @@ public class ListPasswordActivity extends ListActivity implements
 		PMLog.log("onQueryTextSubmit----------");
 		return true;
 	}
+	
+	public void processDelete(View view){
+		PMLog.log("processing delete event----------");
+	}
 
 
 }
