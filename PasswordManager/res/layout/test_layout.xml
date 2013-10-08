@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="57dp" >
+    </RelativeLayout>
+    
+
+    <ImageView
+        android:id="@+id/item_view_delete_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/item_view_name"
+        android:layout_alignBottom="@+id/item_view_name"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_delete"
+        android:contentDescription="@string/image_delete"
+        />
+
+    <ImageView
+        android:id="@+id/item_view_edit_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/item_view_delete_item"
+        android:layout_alignBottom="@+id/item_view_delete_item"
+        android:layout_toLeftOf="@+id/item_view_delete_item"
+        android:src="@drawable/ic_edit"
+        android:contentDescription="@string/image_edit"
+        />
+
+    <TextView
+        android:id="@+id/item_view_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/item_view_description"
+        android:layout_below="@+id/item_view_description"
+        />
+
+    <TextView
+        android:id="@+id/item_view_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="19dp"
+        />
+    
+   
+
+</RelativeLayout>
