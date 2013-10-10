@@ -75,7 +75,6 @@ public class AddPasswordActivity extends Activity {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-		// 2. Chain together various setter methods to set the dialog characteristics
 		builder.setMessage("The password has been added, do you want to add another one?")
 		       .setTitle("message");
 		

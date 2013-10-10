@@ -6,12 +6,15 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kingswood.passwordmanager.PasswordVO;
 import com.kingswood.passwordmanager.R;
+import com.kingswood.passwordmanager.util.PMLog;
 
 public class ListPasswordAdapter extends BaseAdapter {
 
@@ -82,6 +85,16 @@ public class ListPasswordAdapter extends BaseAdapter {
         	name.setText(passwordList.get(position).getName());
         	description.setText(passwordList.get(position).getDescription());
         	convertView.setBackgroundColor(Color.BLACK);
+        	
+        	ImageView deleteView = (ImageView)convertView.findViewById(R.id.item_view_delete_item);
+        	deleteView.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					
+					PMLog.log("calling onClick method-------------");
+					
+				}
+        	});
         }  
 		
 		return convertView;

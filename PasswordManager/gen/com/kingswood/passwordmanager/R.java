@@ -33,9 +33,9 @@ public final class R {
         public static final int add_password_username=0x7f080001;
         public static final int cancel_button=0x7f080005;
         public static final int item_view_delete_item=0x7f08000a;
-        public static final int item_view_description=0x7f080008;
+        public static final int item_view_description=0x7f080007;
         public static final int item_view_edit_item=0x7f080009;
-        public static final int item_view_name=0x7f080007;
+        public static final int item_view_name=0x7f080008;
         public static final int menu_create_new=0x7f08000c;
         public static final int menu_edit=0x7f08000d;
         public static final int relativeLayout1=0x7f080006;
