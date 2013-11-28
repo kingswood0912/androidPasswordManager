@@ -33,7 +33,7 @@ public class DataUtil {
 		
 		List<PasswordVO> list = new ArrayList<PasswordVO>();
 		
-		for(int i = 0;i<50;i++){
+		for(int i = 0;i<10;i++){
 			PasswordVO vo = new PasswordVO();
 			vo.setName("name" + i);
 			vo.setDescription(String.valueOf(System.currentTimeMillis()));

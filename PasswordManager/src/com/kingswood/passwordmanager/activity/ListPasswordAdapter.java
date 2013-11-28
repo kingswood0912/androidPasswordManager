@@ -96,6 +96,16 @@ public class ListPasswordAdapter extends BaseAdapter {
 				}
         	});
         }  
+        
+//        if(null != convertView){
+//        	convertView.setOnClickListener(new OnClickListener() {
+//				
+//				@Override
+//				public void onClick(View v) {
+//					System.out.println("detecting onclick event.");
+//				}
+//			});
+//        }
 		
 		return convertView;
 	}

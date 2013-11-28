@@ -4,16 +4,16 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
-import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Intent;
-import android.content.Loader;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.kingswood.passwordmanager.PasswordVO;
@@ -38,6 +38,8 @@ public class ListPasswordActivity extends ListActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		
+		
 
 		DataUtil.initializeData(getApplicationContext());
 
@@ -53,6 +55,16 @@ public class ListPasswordActivity extends ListActivity implements
 				getApplicationContext());
 
 		setListAdapter(adapter);
+		
+		setContentView(R.layout.password_list);
+		
+		
+		
+		ListView listView = (ListView)findViewById(android.R.id.list);
+		
+		listView.setSelector(R.drawable.list_selector);
+		
+		listView.setOnItemClickListener(new listItemOnClickListener());
 
 	}
 
@@ -138,6 +150,21 @@ public class ListPasswordActivity extends ListActivity implements
 	
 	public void processDelete(View view){
 		PMLog.log("processing delete event----------");
+	}
+	
+	class listItemOnClickListener implements OnItemClickListener{
+
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			System.out.println("position : " + position);
+			PasswordVO password = passwordList.get(position);
+			
+			System.out.println("id : " + id);
+			
+			System.out.println(password.getName());
+		}
+		
 	}
 
 
