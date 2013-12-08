@@ -5,7 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 
-import com.kingswood.passwordmanager.PasswordVO;
+import com.kingswood.passwordmanager.activity.PasswordVO;
 import com.kingswood.passwordmanager.persistent.IPasswordDAO;
 import com.kingswood.passwordmanager.persistent.PasswordDAO;
 

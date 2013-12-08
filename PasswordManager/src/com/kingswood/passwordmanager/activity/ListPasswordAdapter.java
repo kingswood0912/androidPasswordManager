@@ -3,16 +3,19 @@ package com.kingswood.passwordmanager.activity;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
-import com.kingswood.passwordmanager.PasswordVO;
+import com.kingswood.passwordmanager.PMConstants;
 import com.kingswood.passwordmanager.R;
 import com.kingswood.passwordmanager.util.PMLog;
 
@@ -86,28 +89,44 @@ public class ListPasswordAdapter extends BaseAdapter {
         	description.setText(passwordList.get(position).getDescription());
         	convertView.setBackgroundColor(Color.BLACK);
         	
-        	ImageView deleteView = (ImageView)convertView.findViewById(R.id.item_view_delete_item);
-        	deleteView.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-					
-					PMLog.log("calling onClick method-------------");
-					
-				}
-        	});
+        	//ImageView deleteView = (ImageView)convertView.findViewById(R.id.item_view_delete_item);
+        	//deleteView.setOnClickListener(new listItemOnClickListener());
         }  
         
-//        if(null != convertView){
-//        	convertView.setOnClickListener(new OnClickListener() {
-//				
-//				@Override
-//				public void onClick(View v) {
-//					System.out.println("detecting onclick event.");
-//				}
-//			});
-//        }
+        ListItemOnClickListener clickListener = new ListItemOnClickListener();
+        
+        clickListener.setContext(this.context);
+        
+        convertView.setOnClickListener(clickListener);
 		
 		return convertView;
+	}
+	
+	class ListItemOnClickListener implements View.OnClickListener{
+		
+		private Context context;
+		
+		public void setContext(Context context){
+			this.context = context;
+		}
+
+		@Override
+		public void onClick(View v) {
+			
+			TextView passwordNameView = (TextView)v.findViewById(R.id.item_view_name); 
+			
+			String passwordName = passwordNameView.getText().toString();
+			
+			PMLog.log("passwordName : " + passwordName);
+			
+			Intent intent = new Intent(context, PasswordDetailActivity.class);
+			
+			intent.putExtra(PMConstants.PARAM_NAME, passwordName);
+			
+			context.startActivity(intent);
+			
+		}
+		
 	}
 
 }

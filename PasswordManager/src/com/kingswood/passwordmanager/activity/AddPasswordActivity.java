@@ -1,6 +1,5 @@
 package com.kingswood.passwordmanager.activity;
 
-import com.kingswood.passwordmanager.PasswordVO;
 import com.kingswood.passwordmanager.R;
 import com.kingswood.passwordmanager.persistent.IPasswordDAO;
 import com.kingswood.passwordmanager.persistent.PasswordDAO;

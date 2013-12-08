@@ -1,4 +1,4 @@
-package com.kingswood.passwordmanager;
+package com.kingswood.passwordmanager.activity;
 
 import java.io.Serializable;
 

@@ -9,7 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.kingswood.passwordmanager.PasswordVO;
+import com.kingswood.passwordmanager.activity.PasswordVO;
 import com.kingswood.passwordmanager.util.PMLog;
 
 public class PasswordDAO implements IPasswordDAO {

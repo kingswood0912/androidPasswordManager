@@ -2,7 +2,7 @@ package com.kingswood.passwordmanager.persistent;
 
 import java.util.List;
 
-import com.kingswood.passwordmanager.PasswordVO;
+import com.kingswood.passwordmanager.activity.PasswordVO;
 
 public interface IPasswordDAO {
 

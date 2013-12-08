@@ -4,7 +4,6 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,7 +15,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-import com.kingswood.passwordmanager.PasswordVO;
 import com.kingswood.passwordmanager.R;
 import com.kingswood.passwordmanager.persistent.IPasswordDAO;
 import com.kingswood.passwordmanager.persistent.PasswordDAO;
@@ -52,23 +50,32 @@ public class ListPasswordActivity extends ListActivity implements
 		}
 
 		adapter = new ListPasswordAdapter(passwordList,
-				getApplicationContext());
+				this.getBaseContext());
 
 		setListAdapter(adapter);
 		
-		setContentView(R.layout.password_list);
+		//ListView listView = (ListView)findViewById(android.R.id.list);
 		
-		
-		
-		ListView listView = (ListView)findViewById(android.R.id.list);
-		
-		listView.setSelector(R.drawable.list_selector);
-		
-		listView.setOnItemClickListener(new listItemOnClickListener());
+		//listView.setOnItemClickListener(new listItemOnClickListener());
 
 	}
+	
+	class listItemOnClickListener implements OnItemClickListener{
 
-	@Override
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			System.out.println("position : " + position);
+			PasswordVO password = passwordList.get(position);
+			
+			System.out.println("id : " + id);
+			
+			System.out.println(password.getName());
+		}
+		
+	}
+
+	/*@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle item selection
 		switch (item.getItemId()) {
@@ -85,6 +92,7 @@ public class ListPasswordActivity extends ListActivity implements
 			return super.onOptionsItemSelected(item);
 		}
 	}
+	*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -152,20 +160,5 @@ public class ListPasswordActivity extends ListActivity implements
 		PMLog.log("processing delete event----------");
 	}
 	
-	class listItemOnClickListener implements OnItemClickListener{
-
-		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			System.out.println("position : " + position);
-			PasswordVO password = passwordList.get(position);
-			
-			System.out.println("id : " + id);
-			
-			System.out.println(password.getName());
-		}
-		
-	}
-
 
 }
