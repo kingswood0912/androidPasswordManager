@@ -93,11 +93,11 @@ public class ListPasswordAdapter extends BaseAdapter {
         	//deleteView.setOnClickListener(new listItemOnClickListener());
         }  
         
-        ListItemOnClickListener clickListener = new ListItemOnClickListener();
+        //ListItemOnClickListener clickListener = new ListItemOnClickListener();
         
-        clickListener.setContext(this.context);
+        //clickListener.setContext(this.context);
         
-        convertView.setOnClickListener(clickListener);
+        //convertView.setOnClickListener(clickListener);
 		
 		return convertView;
 	}

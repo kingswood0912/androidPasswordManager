@@ -4,6 +4,8 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +17,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.kingswood.passwordmanager.PMConstants;
 import com.kingswood.passwordmanager.R;
 import com.kingswood.passwordmanager.persistent.IPasswordDAO;
 import com.kingswood.passwordmanager.persistent.PasswordDAO;
@@ -54,23 +57,36 @@ public class ListPasswordActivity extends ListActivity implements
 
 		setListAdapter(adapter);
 		
-		//ListView listView = (ListView)findViewById(android.R.id.list);
+		ListView listView = (ListView)findViewById(android.R.id.list);
 		
-		//listView.setOnItemClickListener(new listItemOnClickListener());
+		listView.setOnItemClickListener(new ListItemOnClickListener(this.getApplicationContext()));
 
 	}
 	
-	class listItemOnClickListener implements OnItemClickListener{
+	class ListItemOnClickListener implements OnItemClickListener{
+		
+		private Context context = null;
+		
+		public ListItemOnClickListener(Context context){
+			this.context = context;
+		}
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-			System.out.println("position : " + position);
+			
 			PasswordVO password = passwordList.get(position);
 			
-			System.out.println("id : " + id);
-			
 			System.out.println(password.getName());
+			
+			Intent intent = new Intent(this.context, PasswordDetailActivity.class);
+			
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			
+			intent.putExtra(PMConstants.PARAM_NAME, password.getName());
+			
+			context.startActivity(intent);
+			
 		}
 		
 	}
