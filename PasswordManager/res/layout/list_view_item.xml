@@ -38,28 +38,4 @@
         android:textSize="16sp"
         />
 
-    <ImageView
-        android:id="@+id/item_view_edit_item"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="14dp"
-        android:layout_marginTop="14dp"
-        android:layout_toLeftOf="@+id/item_view_delete_item"
-        android:contentDescription="@string/image_edit"
-        android:src="@drawable/ic_edit" 
-        android:clickable="true"/>
-
-    <ImageView
-        android:id="@+id/item_view_delete_item"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/item_view_edit_item"
-        android:layout_marginRight="14dp"
-        android:contentDescription="@string/image_delete"
-        android:src="@drawable/ic_delete" 
-        android:clickable="true"
-        />
-
 </RelativeLayout>
