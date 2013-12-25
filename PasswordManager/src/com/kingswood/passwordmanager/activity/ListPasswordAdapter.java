@@ -89,8 +89,10 @@ public class ListPasswordAdapter extends BaseAdapter {
         	description.setText(passwordList.get(position).getDescription());
         	convertView.setBackgroundColor(Color.BLACK);
         	
-        	//ImageView deleteView = (ImageView)convertView.findViewById(R.id.item_view_delete_item);
-        	//deleteView.setOnClickListener(new listItemOnClickListener());
+        	// set text color
+        	name.setTextColor(Color.WHITE);
+        	description.setTextColor(Color.WHITE);
+        	
         }  
         
         //ListItemOnClickListener clickListener = new ListItemOnClickListener();
