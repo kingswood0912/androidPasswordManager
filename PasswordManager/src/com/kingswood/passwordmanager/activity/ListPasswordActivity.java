@@ -114,12 +114,38 @@ public class ListPasswordActivity extends ListActivity implements
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.list_password_menu, menu);
+		
+		MenuItem addItem = menu.findItem(R.id.action_add);
+		
+		MenuItemClickListener menuItemClickListener = new MenuItemClickListener(this.getApplicationContext());
+		
+		addItem.setOnMenuItemClickListener(menuItemClickListener);
+		
 
 		//MenuItem searchItem = menu.findItem(R.id.action_search);
 		//mSearchView = (SearchView) searchItem.getActionView();
 		//setupSearchView(searchItem);
 
 		return true;
+	}
+	
+	class MenuItemClickListener implements MenuItem.OnMenuItemClickListener{
+		
+		private Context context;
+		
+		public MenuItemClickListener(Context context){
+			this.context = context;
+		}
+		
+		public boolean onMenuItemClick(MenuItem arg0) {
+			Intent intent = new Intent(this.context, PasswordDetailActivity.class);
+			
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			
+			context.startActivity(intent);
+			
+			return true;
+		}
 	}
 
 	private void setupSearchView(MenuItem searchItem) {

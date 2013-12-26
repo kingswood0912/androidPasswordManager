@@ -45,16 +45,25 @@ public class PasswordDetailActivity extends Activity {
 		cancelButton = (Button) findViewById(R.id.cancel_button);
 
 		Bundle extras = getIntent().getExtras();
-		String passwordName = extras.getString(PMConstants.PARAM_NAME);
-		PMLog.log("get password name from extras : " + passwordName);
 		
-		IPasswordDAO dao = new PasswordDAO(this.getApplicationContext());
-		PasswordVO vo = dao.selectPasswordByName(passwordName);
 		
-		name.setText(vo.getName());
-		username.setText(vo.getUsername());
-		password.setText(vo.getPassword());
-		description.setText(vo.getDescription());
+		if(null != extras){
+			//Edit
+			String passwordName = extras.getString(PMConstants.PARAM_NAME);
+			
+			PMLog.log("get password name from extras : " + passwordName);
+			
+			IPasswordDAO dao = new PasswordDAO(this.getApplicationContext());
+			PasswordVO vo = dao.selectPasswordByName(passwordName);
+			
+			name.setText(vo.getName());
+			username.setText(vo.getUsername());
+			password.setText(vo.getPassword());
+			description.setText(vo.getDescription());
+		}else{
+			//New
+		}
+		
 		
 		// display back button on the bar
 		ActionBar actionBar = getActionBar();
