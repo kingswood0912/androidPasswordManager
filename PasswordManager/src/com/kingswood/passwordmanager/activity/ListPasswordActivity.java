@@ -115,9 +115,9 @@ public class ListPasswordActivity extends ListActivity implements
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.list_password_menu, menu);
 
-		MenuItem searchItem = menu.findItem(R.id.action_search);
-		mSearchView = (SearchView) searchItem.getActionView();
-		setupSearchView(searchItem);
+		//MenuItem searchItem = menu.findItem(R.id.action_search);
+		//mSearchView = (SearchView) searchItem.getActionView();
+		//setupSearchView(searchItem);
 
 		return true;
 	}

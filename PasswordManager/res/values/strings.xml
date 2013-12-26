@@ -16,9 +16,13 @@
     <string name="text_password">password</string>
     <string name="text_description">description</string>
     
-    <string name="action_search">search password</string>
     
     <string name="search">Search</string>
+    
+    <string name="action_search">Search</string>
+    <string name="action_add">Add</string>
+    <string name="action_about">About</string>
+    <string name="action_check_updates">Check updates</string>
     
     
     <!-- Menu texts -->
