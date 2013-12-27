@@ -3,6 +3,7 @@ package com.kingswood.passwordmanager.activity;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -40,7 +41,7 @@ public class ListPasswordActivity extends ListActivity implements
 
 		super.onCreate(savedInstanceState);
 		
-		
+		setContentView(R.layout.layout_list_password);
 
 		DataUtil.initializeData(getApplicationContext());
 
@@ -137,12 +138,20 @@ public class ListPasswordActivity extends ListActivity implements
 			this.context = context;
 		}
 		
-		public boolean onMenuItemClick(MenuItem arg0) {
-			Intent intent = new Intent(this.context, PasswordDetailActivity.class);
+		public boolean onMenuItemClick(MenuItem item) {
 			
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			if(item.getItemId() == R.id.action_add){
+				PasswordDetailDialogFragment detailDialogFragment = new PasswordDetailDialogFragment();
+				detailDialogFragment.show(ListPasswordActivity.this.getFragmentManager(), "This is a test.");
+			}else{
+				PMLog.log("item id is : " + item.getItemId());
+			}
 			
-			context.startActivity(intent);
+			//Intent intent = new Intent(this.context, PasswordDetailActivity.class);
+			
+			//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			
+			//context.startActivity(intent);
 			
 			return true;
 		}

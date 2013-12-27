@@ -9,12 +9,14 @@
     <string name="save">save</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    <string name="random">Generate Random Password</string>
+    <string name="random">Random Password</string>
     
-    <string name="text_name">name</string>
-    <string name="text_username">username</string>
-    <string name="text_password">password</string>
-    <string name="text_description">description</string>
+    
+    <string name="text_adding_new_password">Adding new password</string>
+    <string name="text_name">Please input the title for this password</string>
+    <string name="text_username">Please input the username</string>
+    <string name="text_password">Please input the password (case sensitive)</string>
+    <string name="text_description">Please input the description (can be searched later)</string>
     
     
     <string name="search">Search</string>

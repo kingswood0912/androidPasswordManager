@@ -1,6 +1,7 @@
 package com.kingswood.passwordmanager.util;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.content.Context;
@@ -39,6 +40,9 @@ public class DataUtil {
 			vo.setDescription(String.valueOf(System.currentTimeMillis()));
 			vo.setUsername("username" + i);
 			vo.setPassword("password" + i);
+			Date now = new Date();
+			vo.setCreatedDate(now);
+			vo.setUpdatedDate(now);
 			
 			list.add(vo);
 		}

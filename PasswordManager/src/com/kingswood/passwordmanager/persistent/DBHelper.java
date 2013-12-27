@@ -18,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	//private static final String SQL_INSERT = "insert into " + TABLE_NAME + " (_name, _username, _password, _description) values (?,?,?,?) ";  
 	
 	private static String CREATE_PASSWORD_TABLE = "create table " + TABLE_PASSWORD
-			+ " (_name text, _username text, _password text, _description text )";
+			+ " (_name text, _username text, _password text, _description text, _created_date datetime, _updated_date datetime )";
 
 	public DBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

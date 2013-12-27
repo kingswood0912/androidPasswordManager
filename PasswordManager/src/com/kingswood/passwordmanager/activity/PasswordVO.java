@@ -1,6 +1,7 @@
 package com.kingswood.passwordmanager.activity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class PasswordVO implements Serializable {
 
@@ -16,6 +17,10 @@ public class PasswordVO implements Serializable {
 	private String password;
 
 	private String description;
+	
+	private Date createdDate;
+	
+	private Date updatedDate;
 
 	public String getName() {
 		return name;
@@ -51,6 +56,22 @@ public class PasswordVO implements Serializable {
 	
 	public String toString(){
 		return name;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
 	}
 
 }
