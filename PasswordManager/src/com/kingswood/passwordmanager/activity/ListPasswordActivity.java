@@ -5,7 +5,6 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,7 +16,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-import com.kingswood.passwordmanager.PMConstants;
 import com.kingswood.passwordmanager.R;
 import com.kingswood.passwordmanager.persistent.IPasswordDAO;
 import com.kingswood.passwordmanager.persistent.PasswordDAO;
@@ -127,9 +125,9 @@ public class ListPasswordActivity extends ListActivity implements
 		addItem.setOnMenuItemClickListener(menuItemClickListener);
 		
 
-		//MenuItem searchItem = menu.findItem(R.id.action_search);
-		//mSearchView = (SearchView) searchItem.getActionView();
-		//setupSearchView(searchItem);
+		MenuItem searchItem = menu.findItem(R.id.action_search);
+		mSearchView = (SearchView) searchItem.getActionView();
+		setupSearchView(searchItem);
 
 		return true;
 	}
@@ -153,12 +151,6 @@ public class ListPasswordActivity extends ListActivity implements
 			}else{
 				PMLog.log("item id is : " + item.getItemId());
 			}
-			
-			//Intent intent = new Intent(this.context, PasswordDetailActivity.class);
-			
-			//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			
-			//context.startActivity(intent);
 			
 			return true;
 		}
