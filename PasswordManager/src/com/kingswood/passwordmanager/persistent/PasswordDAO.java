@@ -86,7 +86,17 @@ public class PasswordDAO implements IPasswordDAO {
 
 	@Override
 	public void updatePassword(PasswordVO passwordVO) {
-		// TODO Auto-generated method stub
+		
+		ContentValues values = new ContentValues();
+		values.put(COLUMN_NAME, passwordVO.getTitle());
+		values.put(COLUMN_USERNAME, passwordVO.getUsername());
+		values.put(COLUMN_PASSWORD, passwordVO.getPassword());
+		values.put(COLUMN_DESCRIPTION, passwordVO.getDescription());
+		values.put(COLUMN_UPDATEDDATE, PMUtil.convertDate(passwordVO.getUpdatedDate()));
+
+		int rowUpdated = database.update(DBHelper.TABLE_PASSWORD, values, COLUMN_NAME+"='"+passwordVO.getTitle()+"'", null);
+
+		PMLog.log("Updated " + rowUpdated + " records in table " + DBHelper.DATABASE_NAME);
 
 	}
 

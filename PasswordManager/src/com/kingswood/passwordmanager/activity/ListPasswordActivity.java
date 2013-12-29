@@ -218,6 +218,7 @@ public class ListPasswordActivity extends ListActivity implements
 		PMLog.log("processing delete event----------");
 	}
 	
+	// create new password, called by dialog window
 	public void onCreateNewPassword(PasswordVO vo){
 		
 		// insert into database
@@ -228,6 +229,16 @@ public class ListPasswordActivity extends ListActivity implements
 		this.finish();
 		startActivity(getIntent());
 		
+	}
+	
+	// update existing password, called by open dialog
+	public void onUpdateExistingPassword(PasswordVO vo) {
+		IPasswordDAO dao = new PasswordDAO(getApplicationContext());
+		dao.updatePassword(vo);
+
+		// refresh/reload current activity
+		this.finish();
+		startActivity(getIntent());
 	}
 	
 

@@ -173,25 +173,23 @@ public final class R {
         public static final int selected=0x7f020006;
     }
     public static final class id {
-        public static final int action_about=0x7f0a0011;
-        public static final int action_add=0x7f0a0010;
-        public static final int action_check_updates=0x7f0a0012;
-        public static final int action_search=0x7f0a000f;
-        public static final int created_date=0x7f0a000a;
-        public static final int item_view_delete_item=0x7f0a000d;
+        public static final int action_about=0x7f0a000f;
+        public static final int action_add=0x7f0a000e;
+        public static final int action_check_updates=0x7f0a0010;
+        public static final int action_search=0x7f0a000d;
+        public static final int added_and_updated_date=0x7f0a000a;
+        public static final int date_information=0x7f0a0009;
+        public static final int item_view_delete_item=0x7f0a000b;
         public static final int item_view_description=0x7f0a0001;
-        public static final int item_view_edit_item=0x7f0a000e;
+        public static final int item_view_edit_item=0x7f0a000c;
         public static final int item_view_name=0x7f0a0002;
         public static final int password_detail_layout=0x7f0a0003;
         public static final int relativeLayout1=0x7f0a0000;
-        public static final int tablerow_added_date=0x7f0a0009;
-        public static final int tablerow_updated_date=0x7f0a000b;
         public static final int textView1=0x7f0a0004;
         public static final int text_field_description=0x7f0a0008;
         public static final int text_field_name=0x7f0a0005;
         public static final int text_field_password=0x7f0a0007;
         public static final int text_field_username=0x7f0a0006;
-        public static final int updated_date=0x7f0a000c;
     }
     public static final class layout {
         public static final int layout_list_password=0x7f030000;

@@ -30,13 +30,9 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 	
 	private EditText description;
 	
-	private TextView createdDate;
+	private TextView createdAndUpdatedDate;
 	
-	private TextView updatedDate;
-	
-	private TableRow addedDateRow;
-	
-	private TableRow updatedDateRow;
+	private TableRow dateInformationRow;
 	
 	private View view;
 	
@@ -59,10 +55,8 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 		username = (EditText)view.findViewById(R.id.text_field_username);
 		password = (EditText)view.findViewById(R.id.text_field_password);
 		description = (EditText)view.findViewById(R.id.text_field_description);
-		createdDate = (TextView)view.findViewById(R.id.created_date);
-		updatedDate = (TextView)view.findViewById(R.id.updated_date);
-		addedDateRow = (TableRow)view.findViewById(R.id.tablerow_added_date);
-		updatedDateRow = (TableRow)view.findViewById(R.id.tablerow_updated_date);
+		createdAndUpdatedDate = (TextView)view.findViewById(R.id.added_and_updated_date);
+		dateInformationRow = (TableRow)view.findViewById(R.id.date_information);
 		
 		
 		if(action.equals(ListPasswordActivity.ACTION_UPDATE)){
@@ -74,12 +68,16 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 			username.setText(vo.getUsername());
 			password.setText(vo.getPassword());
 			description.setText(vo.getDescription());
-			createdDate.setText(PMUtil.convertDate(vo.getCreatedDate()));
-			updatedDate.setText(PMUtil.convertDate(vo.getUpdatedDate()));
+			String dateInformationStr = "Created at : "
+					+ PMUtil.convertDate(vo.getCreatedDate())
+					+ " last updated at : "
+					+ PMUtil.convertDate(vo.getUpdatedDate()); 
+			createdAndUpdatedDate.setText(dateInformationStr);
+			dateInformationRow.setVisibility(View.VISIBLE);
+			
 		}else{
 			// if it is adding password dialog, then hide added date and updated date rows
-			addedDateRow.setVisibility(View.GONE);
-			updatedDateRow.setVisibility(View.GONE);
+			dateInformationRow.setVisibility(View.GONE);
 		}
 		
 		builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener(){
@@ -90,8 +88,6 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 				PMLog.log("save button is clicked.");
 				
 				PMLog.log("view is : " + view);
-				
-				
 				
 				// construct password vo object and then pass to parent activity to process
 				String titleStr = title.getText().toString();
@@ -105,11 +101,24 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 				vo.setPassword(passwordStr);
 				vo.setDescription(descriptionStr);
 				Date now = new Date();
-				vo.setCreatedDate(now);
+				
 				vo.setUpdatedDate(now);
 				
+				Bundle bundle = getArguments();
+				
+				String action = bundle.getString(ListPasswordActivity.ACTION);
+				
+				// get parent activity
 				ListPasswordActivity listPasswordActivity = (ListPasswordActivity)getActivity();
-				listPasswordActivity.onCreateNewPassword(vo);
+				
+				if(action.equals(ListPasswordActivity.ACTION_ADD)){
+					vo.setCreatedDate(now);
+					listPasswordActivity.onCreateNewPassword(vo);
+				}else if(action.equals(ListPasswordActivity.ACTION_UPDATE)){
+					listPasswordActivity.onUpdateExistingPassword(vo);
+				}
+				
+				
 				
 				dismiss();
 			}
@@ -130,6 +139,9 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				PMLog.log("cancel button is clicked.");
+				
+				// just close dialog window
+				dismiss();
 			}
 			
 		});
