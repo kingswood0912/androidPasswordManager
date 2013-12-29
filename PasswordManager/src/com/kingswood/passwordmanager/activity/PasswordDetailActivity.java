@@ -54,7 +54,7 @@ public class PasswordDetailActivity extends Activity {
 			PMLog.log("get password name from extras : " + passwordName);
 			
 			IPasswordDAO dao = new PasswordDAO(this.getApplicationContext());
-			PasswordVO vo = dao.selectPasswordByName(passwordName);
+			PasswordVO vo = dao.selectPasswordByTitle(passwordName);
 			
 			name.setText(vo.getTitle());
 			username.setText(vo.getUsername());

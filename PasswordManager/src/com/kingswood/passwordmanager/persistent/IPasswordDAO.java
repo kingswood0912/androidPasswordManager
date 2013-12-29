@@ -14,7 +14,7 @@ public interface IPasswordDAO {
 	
 	public void deletePassword(String name);
 	
-	public PasswordVO selectPasswordByName(String name);
+	public PasswordVO selectPasswordByTitle(String title);
 	
 	public List<PasswordVO> selectPasswordsByNameOrDescription(String nameOrDescription);
 	

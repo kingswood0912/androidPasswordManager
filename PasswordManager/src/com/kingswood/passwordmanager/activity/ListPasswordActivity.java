@@ -3,7 +3,6 @@ package com.kingswood.passwordmanager.activity;
 import java.util.List;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +27,14 @@ import com.kingswood.passwordmanager.util.PMLog;
 @SuppressLint("NewApi")
 public class ListPasswordActivity extends ListActivity implements
 		SearchView.OnQueryTextListener {
+	
+	public static final String ACTION = "action";
+	
+	public static final String ACTION_ADD = "add";
+	
+	public static final String ACTION_UPDATE = "update";
+	
+	public static final String TITLE = "title";
 
 	private SearchView mSearchView;
 
@@ -64,30 +71,27 @@ public class ListPasswordActivity extends ListActivity implements
 
 	}
 	
-	class ListItemOnClickListener implements OnItemClickListener{
-		
+	class ListItemOnClickListener implements OnItemClickListener {
+
 		private Context context = null;
-		
-		public ListItemOnClickListener(Context context){
+
+		public ListItemOnClickListener(Context context) {
 			this.context = context;
 		}
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-			
+
 			PasswordVO password = passwordList.get(position);
 			
-			System.out.println(password.getTitle());
-			
-			Intent intent = new Intent(this.context, PasswordDetailActivity.class);
-			
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			
-			intent.putExtra(PMConstants.PARAM_NAME, password.getTitle());
-			
-			context.startActivity(intent);
-			
+			PasswordDetailDialogFragment detailDialogFragment = new PasswordDetailDialogFragment();
+			Bundle bundle = new Bundle();
+			bundle.putString(ACTION, ACTION_UPDATE);
+			bundle.putString(TITLE, password.getTitle());
+			detailDialogFragment.setArguments(bundle);
+			detailDialogFragment.show(ListPasswordActivity.this.getFragmentManager(), null);
+
 		}
 		
 	}
@@ -142,7 +146,10 @@ public class ListPasswordActivity extends ListActivity implements
 			
 			if(item.getItemId() == R.id.action_add){
 				PasswordDetailDialogFragment detailDialogFragment = new PasswordDetailDialogFragment();
-				detailDialogFragment.show(ListPasswordActivity.this.getFragmentManager(), "This is a test.");
+				Bundle bundle = new Bundle();
+				bundle.putString(ACTION, ACTION_ADD);
+				detailDialogFragment.setArguments(bundle);
+				detailDialogFragment.show(ListPasswordActivity.this.getFragmentManager(), null);
 			}else{
 				PMLog.log("item id is : " + item.getItemId());
 			}

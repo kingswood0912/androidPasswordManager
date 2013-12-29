@@ -173,21 +173,25 @@ public final class R {
         public static final int selected=0x7f020006;
     }
     public static final class id {
-        public static final int action_about=0x7f0a000d;
-        public static final int action_add=0x7f0a000c;
-        public static final int action_check_updates=0x7f0a000e;
-        public static final int action_search=0x7f0a000b;
-        public static final int item_view_delete_item=0x7f0a0009;
+        public static final int action_about=0x7f0a0011;
+        public static final int action_add=0x7f0a0010;
+        public static final int action_check_updates=0x7f0a0012;
+        public static final int action_search=0x7f0a000f;
+        public static final int created_date=0x7f0a000a;
+        public static final int item_view_delete_item=0x7f0a000d;
         public static final int item_view_description=0x7f0a0001;
-        public static final int item_view_edit_item=0x7f0a000a;
+        public static final int item_view_edit_item=0x7f0a000e;
         public static final int item_view_name=0x7f0a0002;
         public static final int password_detail_layout=0x7f0a0003;
         public static final int relativeLayout1=0x7f0a0000;
+        public static final int tablerow_added_date=0x7f0a0009;
+        public static final int tablerow_updated_date=0x7f0a000b;
         public static final int textView1=0x7f0a0004;
         public static final int text_field_description=0x7f0a0008;
         public static final int text_field_name=0x7f0a0005;
         public static final int text_field_password=0x7f0a0007;
         public static final int text_field_username=0x7f0a0006;
+        public static final int updated_date=0x7f0a000c;
     }
     public static final class layout {
         public static final int layout_list_password=0x7f030000;
@@ -199,10 +203,10 @@ public final class R {
         public static final int list_password_menu=0x7f090000;
     }
     public static final class string {
-        public static final int action_about=0x7f070010;
-        public static final int action_add=0x7f07000f;
-        public static final int action_check_updates=0x7f070011;
-        public static final int action_search=0x7f07000e;
+        public static final int action_about=0x7f070012;
+        public static final int action_add=0x7f070011;
+        public static final int action_check_updates=0x7f070013;
+        public static final int action_search=0x7f070010;
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070000;
         public static final int cancel=0x7f070006;
@@ -210,21 +214,23 @@ public final class R {
         public static final int hello_world=0x7f070002;
         /**  Image descriptions 
          */
-        public static final int image_delete=0x7f070015;
-        public static final int image_edit=0x7f070016;
+        public static final int image_delete=0x7f070017;
+        public static final int image_edit=0x7f070018;
         /**  Menu texts 
          */
-        public static final int menu_create_new=0x7f070013;
-        public static final int menu_edit=0x7f070014;
+        public static final int menu_create_new=0x7f070015;
+        public static final int menu_edit=0x7f070016;
         public static final int ok=0x7f070005;
         public static final int random=0x7f070007;
         public static final int save=0x7f070004;
-        public static final int search=0x7f07000d;
-        public static final int search_hint=0x7f070012;
+        public static final int search=0x7f07000f;
+        public static final int search_hint=0x7f070014;
         public static final int text_adding_new_password=0x7f070008;
+        public static final int text_created_date=0x7f07000d;
         public static final int text_description=0x7f07000c;
         public static final int text_name=0x7f070009;
         public static final int text_password=0x7f07000b;
+        public static final int text_updated_date=0x7f07000e;
         public static final int text_username=0x7f07000a;
     }
     public static final class style {

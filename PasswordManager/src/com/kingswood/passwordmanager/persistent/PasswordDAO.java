@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.kingswood.passwordmanager.activity.PasswordVO;
 import com.kingswood.passwordmanager.util.PMLog;
+import com.kingswood.passwordmanager.util.PMUtil;
 
 public class PasswordDAO implements IPasswordDAO {
 
@@ -18,9 +19,11 @@ public class PasswordDAO implements IPasswordDAO {
 	public static final String COLUMN_USERNAME = "_username";
 	public static final String COLUMN_PASSWORD = "_password";
 	public static final String COLUMN_DESCRIPTION = "_description";
+	public static final String COLUMN_CREATEDATE = "_created_date";
+	public static final String COLUMN_UPDATEDDATE = "_updated_date";
 
 	private String[] allColumns = { COLUMN_NAME, COLUMN_USERNAME,
-			COLUMN_PASSWORD, COLUMN_DESCRIPTION };
+			COLUMN_PASSWORD, COLUMN_DESCRIPTION, COLUMN_CREATEDATE, COLUMN_UPDATEDDATE};
 
 	private SQLiteDatabase database;
 	private DBHelper dbHelper;
@@ -40,6 +43,8 @@ public class PasswordDAO implements IPasswordDAO {
 		values.put(COLUMN_USERNAME, passwordVO.getUsername());
 		values.put(COLUMN_PASSWORD, passwordVO.getPassword());
 		values.put(COLUMN_DESCRIPTION, passwordVO.getDescription());
+		values.put(COLUMN_CREATEDATE, PMUtil.convertDate(passwordVO.getCreatedDate()));
+		values.put(COLUMN_UPDATEDDATE, PMUtil.convertDate(passwordVO.getUpdatedDate()));
 
 		database.insert(DBHelper.TABLE_PASSWORD, null, values);
 
@@ -64,7 +69,7 @@ public class PasswordDAO implements IPasswordDAO {
 			vo.setTitle(cursor.getString(0));
 			vo.setUsername(cursor.getString(1));
 			vo.setPassword(cursor.getString(2));
-			vo.setDescription(cursor.getString(2));
+			vo.setDescription(cursor.getString(3));
 
 			allPasswords.add(vo);
 
@@ -92,10 +97,10 @@ public class PasswordDAO implements IPasswordDAO {
 	}
 
 	@Override
-	public PasswordVO selectPasswordByName(String name) {
+	public PasswordVO selectPasswordByTitle(String title) {
 
 		Cursor cursor = database.query(DBHelper.TABLE_PASSWORD, allColumns,
-				COLUMN_NAME + "=?", new String[] { name }, null, null, null);
+				COLUMN_NAME + "=?", new String[] { title }, null, null, null);
 
 		cursor.moveToFirst();
 
@@ -105,7 +110,9 @@ public class PasswordDAO implements IPasswordDAO {
 			vo.setTitle(cursor.getString(0));
 			vo.setUsername(cursor.getString(1));
 			vo.setPassword(cursor.getString(2));
-			vo.setDescription(cursor.getString(2));
+			vo.setDescription(cursor.getString(3));
+			vo.setCreatedDate(PMUtil.convertString2Date(cursor.getString(4)));
+			vo.setUpdatedDate(PMUtil.convertString2Date(cursor.getString(5)));
 
 			return vo;
 		}
@@ -134,7 +141,7 @@ public class PasswordDAO implements IPasswordDAO {
 			vo.setTitle(cursor.getString(0));
 			vo.setUsername(cursor.getString(1));
 			vo.setPassword(cursor.getString(2));
-			vo.setDescription(cursor.getString(2));
+			vo.setDescription(cursor.getString(3));
 
 			passwords.add(vo);
 
