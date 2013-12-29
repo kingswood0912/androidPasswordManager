@@ -78,13 +78,13 @@ public class ListPasswordActivity extends ListActivity implements
 			
 			PasswordVO password = passwordList.get(position);
 			
-			System.out.println(password.getName());
+			System.out.println(password.getTitle());
 			
 			Intent intent = new Intent(this.context, PasswordDetailActivity.class);
 			
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			
-			intent.putExtra(PMConstants.PARAM_NAME, password.getName());
+			intent.putExtra(PMConstants.PARAM_NAME, password.getTitle());
 			
 			context.startActivity(intent);
 			
@@ -209,6 +209,18 @@ public class ListPasswordActivity extends ListActivity implements
 	
 	public void processDelete(View view){
 		PMLog.log("processing delete event----------");
+	}
+	
+	public void onCreateNewPassword(PasswordVO vo){
+		
+		// insert into database
+		IPasswordDAO dao = new PasswordDAO(getApplicationContext());
+		dao.insertPassword(vo);
+		
+		// refresh/reload current activity
+		this.finish();
+		startActivity(getIntent());
+		
 	}
 	
 

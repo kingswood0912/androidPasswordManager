@@ -36,7 +36,7 @@ public class PasswordDAO implements IPasswordDAO {
 	public void insertPassword(PasswordVO passwordVO) {
 
 		ContentValues values = new ContentValues();
-		values.put(COLUMN_NAME, passwordVO.getName());
+		values.put(COLUMN_NAME, passwordVO.getTitle());
 		values.put(COLUMN_USERNAME, passwordVO.getUsername());
 		values.put(COLUMN_PASSWORD, passwordVO.getPassword());
 		values.put(COLUMN_DESCRIPTION, passwordVO.getDescription());
@@ -61,7 +61,7 @@ public class PasswordDAO implements IPasswordDAO {
 
 		while (!cursor.isAfterLast()) {
 			PasswordVO vo = new PasswordVO();
-			vo.setName(cursor.getString(0));
+			vo.setTitle(cursor.getString(0));
 			vo.setUsername(cursor.getString(1));
 			vo.setPassword(cursor.getString(2));
 			vo.setDescription(cursor.getString(2));
@@ -102,7 +102,7 @@ public class PasswordDAO implements IPasswordDAO {
 		if (!cursor.isAfterLast()) {
 
 			PasswordVO vo = new PasswordVO();
-			vo.setName(cursor.getString(0));
+			vo.setTitle(cursor.getString(0));
 			vo.setUsername(cursor.getString(1));
 			vo.setPassword(cursor.getString(2));
 			vo.setDescription(cursor.getString(2));
@@ -131,7 +131,7 @@ public class PasswordDAO implements IPasswordDAO {
 
 		while (!cursor.isAfterLast()) {
 			PasswordVO vo = new PasswordVO();
-			vo.setName(cursor.getString(0));
+			vo.setTitle(cursor.getString(0));
 			vo.setUsername(cursor.getString(1));
 			vo.setPassword(cursor.getString(2));
 			vo.setDescription(cursor.getString(2));

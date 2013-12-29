@@ -85,7 +85,7 @@ public class ListPasswordAdapter extends BaseAdapter {
         	convertView = inflater.inflate(R.layout.list_view_item, null);
         	TextView name = (TextView)convertView.findViewById(R.id.item_view_name);
         	TextView description = (TextView)convertView.findViewById(R.id.item_view_description);
-        	name.setText(passwordList.get(position).getName());
+        	name.setText(passwordList.get(position).getTitle());
         	description.setText(passwordList.get(position).getDescription());
         	convertView.setBackgroundColor(Color.BLACK);
         	

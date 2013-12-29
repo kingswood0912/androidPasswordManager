@@ -36,7 +36,7 @@ public class DataUtil {
 		
 		for(int i = 0;i<10;i++){
 			PasswordVO vo = new PasswordVO();
-			vo.setName("name" + i);
+			vo.setTitle("title" + i);
 			vo.setDescription(String.valueOf(System.currentTimeMillis()));
 			vo.setUsername("username" + i);
 			vo.setPassword("password" + i);

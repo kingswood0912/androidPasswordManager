@@ -41,8 +41,8 @@ public class PasswordDetailActivity extends Activity {
 		username = (EditText) findViewById(R.id.text_field_username);
 		password = (EditText) findViewById(R.id.text_field_password);
 		description = (EditText) findViewById(R.id.text_field_description);
-		saveButton = (Button) findViewById(R.id.save_button);
-		cancelButton = (Button) findViewById(R.id.cancel_button);
+		//saveButton = (Button) findViewById(R.id);
+		//cancelButton = (Button) findViewById(R.id.cancel_button);
 
 		Bundle extras = getIntent().getExtras();
 		
@@ -56,7 +56,7 @@ public class PasswordDetailActivity extends Activity {
 			IPasswordDAO dao = new PasswordDAO(this.getApplicationContext());
 			PasswordVO vo = dao.selectPasswordByName(passwordName);
 			
-			name.setText(vo.getName());
+			name.setText(vo.getTitle());
 			username.setText(vo.getUsername());
 			password.setText(vo.getPassword());
 			description.setText(vo.getDescription());

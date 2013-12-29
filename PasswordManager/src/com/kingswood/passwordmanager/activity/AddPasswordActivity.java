@@ -27,29 +27,29 @@ public class AddPasswordActivity extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.layout_add_password);
+		//setContentView(R.layout.layout_add_password);
 		
-		name = (EditText)findViewById(R.id.add_password_name);
-		username = (EditText)findViewById(R.id.add_password_username);
-		password = (EditText)findViewById(R.id.add_password_password);
-		description = (EditText)findViewById(R.id.add_password_description);
+		//name = (EditText)findViewById(R.id.add_password_name);
+		//username = (EditText)findViewById(R.id.add_password_username);
+		//password = (EditText)findViewById(R.id.add_password_password);
+		//description = (EditText)findViewById(R.id.add_password_description);
 	}
 	
 	public void onSave(View v){
-		PMLog.log("calling onSave function");
+		/*PMLog.log("calling onSave function");
 		
 		PMLog.log("name is : " + name.getText().toString());
 		PMLog.log("username is : " + username.getText().toString());
 		PMLog.log("password is : " + password.getText().toString());
 		PMLog.log("description is : " + description.getText().toString());
 		
-		String nameStr = name.getText().toString();
+		String title = name.getText().toString();
 		String usernameStr = username.getText().toString();
 		String passwordStr = password.getText().toString();
 		String descriptionStr = description.getText().toString();
 		
 		PasswordVO vo = new PasswordVO();
-		vo.setName(nameStr);
+		vo.setTitle(nameStr);
 		vo.setUsername(usernameStr);
 		vo.setPassword(passwordStr);
 		vo.setDescription(descriptionStr);
@@ -64,7 +64,7 @@ public class AddPasswordActivity extends Activity {
 			PMLog.log("can not get last password vo which just added");
 		}
 		
-		alert();
+		alert();*/
 		
 		//this.finish();
 		
