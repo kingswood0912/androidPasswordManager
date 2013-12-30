@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.kingswood.passwordmanager.persistent.IPasswordDAO;
 import com.kingswood.passwordmanager.persistent.PasswordDAO;
 import com.kingswood.passwordmanager.util.PMLog;
 import com.kingswood.passwordmanager.util.PMUtil;
+import com.kingswood.passwordmanager.util.RandomPassword;
 
 
 public class PasswordDetailDialogFragment extends DialogFragment {
@@ -129,10 +131,17 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
-				PMLog.log("cancel button is clicked.");
+				
+				PMLog.log("random button is clicked.");
+				
+				String randomPasswrd = RandomPassword.random(8);
+				
+				password.setText(randomPasswrd);
+				
 			}
 			
 		});
+		
 		
 		builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
 
