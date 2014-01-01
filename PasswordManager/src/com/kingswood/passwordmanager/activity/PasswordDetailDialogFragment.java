@@ -40,6 +40,8 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 	
 	private String originalTitle;
 	
+	private Button randomButton;
+	
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -88,6 +90,16 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 			dateInformationRow.setVisibility(View.GONE);
 		}
 		
+		// add on click listener on random button
+		randomButton = (Button)view.findViewById(R.id.random_button);
+		randomButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String randomPassword = RandomPassword.random(8);
+				password.setText(randomPassword);
+			}
+		});
+		
 		builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener(){
 
 			@Override
@@ -129,21 +141,6 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 				
 				
 				dismiss();
-			}
-			
-		});
-		
-		builder.setNeutralButton(R.string.random, new DialogInterface.OnClickListener(){
-
-			@Override
-			public void onClick(DialogInterface arg0, int arg1) {
-				
-				PMLog.log("random button is clicked.");
-				
-				String randomPasswrd = RandomPassword.random(8);
-				
-				password.setText(randomPasswrd);
-				
 			}
 			
 		});

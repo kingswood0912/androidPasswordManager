@@ -20,8 +20,13 @@ public class RandomPassword {
 			password[i] = sourceChars[random.nextInt(sourceLength)];
 		}
 		
+		String result = new String(password);
 		
-		return password.toString();
+		//String result = password.toString();
+		
+		PMLog.log("random password is : " + result);
+		
+		return result;
 		
 	}
 	
