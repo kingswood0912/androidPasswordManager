@@ -85,7 +85,7 @@ public class PasswordDAO implements IPasswordDAO {
 	}
 
 	@Override
-	public void updatePassword(PasswordVO passwordVO) {
+	public void updatePassword(String originalTitle, PasswordVO passwordVO) {
 		
 		ContentValues values = new ContentValues();
 		values.put(COLUMN_NAME, passwordVO.getTitle());
@@ -94,7 +94,7 @@ public class PasswordDAO implements IPasswordDAO {
 		values.put(COLUMN_DESCRIPTION, passwordVO.getDescription());
 		values.put(COLUMN_UPDATEDDATE, PMUtil.convertDate(passwordVO.getUpdatedDate()));
 
-		int rowUpdated = database.update(DBHelper.TABLE_PASSWORD, values, COLUMN_NAME+"='"+passwordVO.getTitle()+"'", null);
+		int rowUpdated = database.update(DBHelper.TABLE_PASSWORD, values, COLUMN_NAME+"='"+originalTitle+"'", null);
 
 		PMLog.log("Updated " + rowUpdated + " records in table " + DBHelper.DATABASE_NAME);
 

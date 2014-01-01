@@ -10,7 +10,7 @@ public interface IPasswordDAO {
 	
 	public List<PasswordVO> selectAllPasswords();
 	
-	public void updatePassword(PasswordVO passwordVO);
+	public void updatePassword(String originalTitle, PasswordVO passwordVO);
 	
 	public void deletePassword(String name);
 	

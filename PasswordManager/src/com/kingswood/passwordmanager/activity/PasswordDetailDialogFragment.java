@@ -38,6 +38,8 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 	
 	private View view;
 	
+	private String originalTitle;
+	
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -61,6 +63,7 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 		dateInformationRow = (TableRow)view.findViewById(R.id.date_information);
 		
 		
+		
 		if(action.equals(ListPasswordActivity.ACTION_UPDATE)){
 			String titleStr = bundle.getString(ListPasswordActivity.TITLE);
 			PMLog.log("title passed from listpasswordactivity is : " + titleStr);
@@ -76,6 +79,9 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 					+ PMUtil.convertDate(vo.getUpdatedDate()); 
 			createdAndUpdatedDate.setText(dateInformationStr);
 			dateInformationRow.setVisibility(View.VISIBLE);
+			
+			//Store original title in case we need update the title later
+			originalTitle = vo.getTitle();
 			
 		}else{
 			// if it is adding password dialog, then hide added date and updated date rows
@@ -117,7 +123,7 @@ public class PasswordDetailDialogFragment extends DialogFragment {
 					vo.setCreatedDate(now);
 					listPasswordActivity.onCreateNewPassword(vo);
 				}else if(action.equals(ListPasswordActivity.ACTION_UPDATE)){
-					listPasswordActivity.onUpdateExistingPassword(vo);
+					listPasswordActivity.onUpdateExistingPassword(originalTitle, vo);
 				}
 				
 				

@@ -54,7 +54,7 @@ public class ListPasswordAdapter extends BaseAdapter {
 				.findViewById(R.id.item_view_description);
 		name.setText(passwordList.get(position).getTitle());
 		description.setText(passwordList.get(position).getDescription());
-		convertView.setBackgroundColor(Color.BLACK);
+		//convertView.setBackgroundColor(Color.BLACK);
 
 		// set text color
 		name.setTextColor(Color.WHITE);

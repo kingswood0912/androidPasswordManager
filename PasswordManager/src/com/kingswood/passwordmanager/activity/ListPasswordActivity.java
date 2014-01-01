@@ -168,7 +168,7 @@ public class ListPasswordActivity extends ListActivity implements
 	}
 
 	protected boolean isAlwaysExpanded() {
-		return true;
+		return false;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -224,9 +224,9 @@ public class ListPasswordActivity extends ListActivity implements
 	}
 	
 	// update existing password, called by open dialog
-	public void onUpdateExistingPassword(PasswordVO vo) {
+	public void onUpdateExistingPassword(String originalTitle, PasswordVO vo) {
 		IPasswordDAO dao = new PasswordDAO(getApplicationContext());
-		dao.updatePassword(vo);
+		dao.updatePassword(originalTitle, vo);
 
 		// refresh/reload current activity
 		this.finish();
