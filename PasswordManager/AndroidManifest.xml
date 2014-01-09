@@ -13,22 +13,22 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name="com.kingswood.passwordmanager.activity.ListPasswordActivity"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name="com.kingswood.passwordmanager.activity.ListPasswordActivity" >
         </activity>
-        <activity android:name="com.kingswood.passwordmanager.activity.PasswordDetailActivity">
+        <activity android:name="com.kingswood.passwordmanager.activity.PasswordDetailActivity" >
         </activity>
-        
         <activity
             android:name="com.kingswood.passwordmanager.activity.AddPasswordActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.kingswood.passwordmanager.activity.LockScreenActivity"
             android:label="@string/app_name" 
-            >
+            android:theme="@android:style/Theme.Black.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
